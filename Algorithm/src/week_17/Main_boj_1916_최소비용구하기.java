@@ -8,26 +8,31 @@ import java.util.StringTokenizer;
 
 public class Main_boj_1916_최소비용구하기 {
 	
-	static int N;
-	static int[][] map = null;
-	static boolean[] result = null;
+	static final int INF = Integer.MAX_VALUE;
+	static long[][] map = null;
+	static boolean[] isChecked = null;
 	
-	private static void func(int start) {
-		while(true) {
-			int[] target = {0, 100000};
-			for(int i=1; i<=N; i++) {
-				if(i==start) continue;
-				if(!result[i] && map[start][i]<target[1])
-					target = new int[]{i, map[start][i]};
+	private static int getMinIdx(int start, int N) {
+		int idx = 0;
+		int minVal = INF;
+		for(int i=1; i<=N; i++) {
+			if(start == i) continue;
+			if(!isChecked[i] && minVal>map[start][i]) {
+				idx = i;
+				minVal = (int)map[start][i];
 			}
-			
-			if(target[0] == 0) return;
-			
-			result[target[0]] = true;
-			for(int i=1; i<=N; i++) {
-				if(i==start) continue;
-				if(map[start][i] > map[start][target[0]]+map[target[0]][i]) {
-					map[start][i] = map[start][target[0]]+map[target[0]][i];
+		}
+		return idx;
+	}
+	
+	private static void dijkstra(int start, int N) {
+		for(int i=0; i<N-1; i++) {
+			int minIdx = getMinIdx(start, N);
+			isChecked[minIdx] = true;
+			for(int j=1; j<=N; j++) {
+				if(start==j) continue;
+				if(!isChecked[j] && map[start][j] > map[start][minIdx]+map[minIdx][j]) {
+					map[start][j] = map[start][minIdx]+map[minIdx][j];
 				}
 			}
 		}
@@ -37,13 +42,14 @@ public class Main_boj_1916_최소비용구하기 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = null;
 		
-		N = Integer.parseInt(br.readLine()); // 도시의 개수
-		int M = Integer.parseInt(br.readLine()); // 버스의 개수
+		int N = Integer.parseInt(br.readLine());
+		int M = Integer.parseInt(br.readLine());
 		
-		result = new boolean[N+1];
-		map = new int[N+1][N+1];
+		map = new long[N+1][N+1];
+		isChecked = new boolean[N+1];
+		
 		for(int i=0; i<=N; i++) {
-			Arrays.fill(map[i], 100000);
+			Arrays.fill(map[i], INF);
 		}
 		
 		for(int i=0; i<M; i++) {
@@ -51,14 +57,17 @@ public class Main_boj_1916_최소비용구하기 {
 			int start = Integer.parseInt(st.nextToken());
 			int end = Integer.parseInt(st.nextToken());
 			int value = Integer.parseInt(st.nextToken());
-			map[start][end] = value;
+			
+			if(map[start][end] > value)
+				map[start][end] = value;
 		}
 		
 		st = new StringTokenizer(br.readLine());
-		int startPoint = Integer.parseInt(st.nextToken());
-		int endPoint = Integer.parseInt(st.nextToken());
-		func(startPoint);
+		int start = Integer.parseInt(st.nextToken());
+		int end = Integer.parseInt(st.nextToken());
 		
-		System.out.println(map[startPoint][endPoint]);
+		dijkstra(start, N);
+		
+		System.out.println(map[start][end]);
 	}
 }
