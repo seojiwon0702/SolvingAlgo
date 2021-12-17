@@ -28,17 +28,22 @@ public class Main_boj_11723_С§Че {
 			// remove
 			if(command.compareTo("remove")==0) {
 				int n = Integer.parseInt(st.nextToken());
-				array[n] = false;
+				if((arrays&1<<n)!=0)
+					arrays = arrays^1<<n;
 			}
 			// check
 			if(command.compareTo("check")==0) {
 				int n = Integer.parseInt(st.nextToken());
-				sb.append((arrays&1<<i)!=0?1:0).append("\n");
+				sb.append((arrays&1<<n)!=0?1:0).append("\n");
 			}
 			// toggle
 			if(command.compareTo("toggle")==0) {
 				int n = Integer.parseInt(st.nextToken());
-				array[n] = !array[n];
+				if((arrays&1<<n) == 0) {
+					arrays = arrays|1<<n;
+				} else {
+					arrays = arrays^1<<n;
+				}
 			}
 			// all
 			if(command.compareTo("all")==0) {
