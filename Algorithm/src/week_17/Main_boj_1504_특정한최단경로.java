@@ -70,7 +70,9 @@ public class Main_boj_1504_특정한최단경로 {
 			int end = Integer.parseInt(st.nextToken());
 			int value = Integer.parseInt(st.nextToken());
 			map[start][end] = value;
+			map[end][start] = value;
 			minDis[start][end] = value;
+			minDis[end][start] = value;
 		}
 		
 		st = new StringTokenizer(br.readLine());
