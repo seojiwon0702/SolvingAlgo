@@ -11,14 +11,11 @@ public class Main_boj_1182_부분수열의합 {
 	static int N, S, answer = 0;
 	
 	private static void func(int idx, int sum) {
-		if(sum>S) return;
-		else {
-			if(sum==S) answer++;
-			if(idx<N) {
-				func(idx+1, sum+numbers[idx]); // idx번째 수를 넣는 경우
-				func(idx+1, sum); // idx번째 수를 넣지 않는 경우
-			}
-		}
+		if(idx>=N) return;
+		if(sum+numbers[idx] == S) answer++;
+		
+		func(idx+1, sum);
+		func(idx+1, sum+numbers[idx]);
 	}
 
 	public static void main(String[] args) throws IOException {
