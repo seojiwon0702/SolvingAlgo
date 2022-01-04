@@ -19,6 +19,7 @@ public class Main_boj_16234_인구이동 {
 		Queue<int[]> queue = new LinkedList<int[]>();
 		Queue<int[]> nations = new LinkedList<int[]>();
 		
+		isVisited[r][c] = true;
 		queue.offer(new int[] {r,c});
 		
 		while(!queue.isEmpty()) {
@@ -37,6 +38,8 @@ public class Main_boj_16234_인구이동 {
 				}
 			}
 		}
+		
+		int nationsSize = nations.size();
 		
 		if(nations.size()>1) {
 			int resultPop = population/nations.size();
