@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
-public class Main_boj_1946_½ÅÀÔ»ç¿ø {
+public class Main_boj_1946_ì‹ ì…ì‚¬ì›{
 	
 	private static int func(PriorityQueue<Applicant> applicants, int N) {
 		int answer = 0;

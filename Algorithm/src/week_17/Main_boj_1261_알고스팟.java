@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_boj_1261_¾Ë°í½ºÆÌ {
+public class Main_boj_1261_ì•Œê³ ìŠ¤íŒŸ{
 	
 	static int[][] map = null;
 	static int[][] memo = null;
@@ -25,12 +25,12 @@ public class Main_boj_1261_¾Ë°í½ºÆÌ {
 				int nr = current[0]+deltas[i][0];
 				int nc = current[1]+deltas[i][1];
 				if(nr>=0 && nr<map.length && nc>=0 && nc<map[0].length) {
-					if(map[nr][nc]==1) { // º®ÀÌ¶ó¸é
+					if(map[nr][nc]==1) { // ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
 						if(memo[nr][nc] > memo[current[0]][current[1]]+1) {
 							memo[nr][nc] = memo[current[0]][current[1]]+1;
 							queue.offer(new int[] {nr,nc});
 						}
-					} else { // ºó¹æÀÌ¶ó¸é
+					} else { // ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
 						if(memo[nr][nc] > memo[current[0]][current[1]]) {
 							memo[nr][nc] = memo[current[0]][current[1]];
 							queue.offer(new int[] {nr,nc});

@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_boj_7562_³ªÀÌÆ®ÀÇÀÌµ¿ {
+public class Main_boj_7562_ë‚˜ì´íŠ¸ì˜ì´ë™{
 	
 	static int[][] deltas = {{-2, 1}, {-1, 2}, {1, 2}, {2, 1}, {2, -1}, {1, -2}, {-1,-2}, {-2, -1}};
 	

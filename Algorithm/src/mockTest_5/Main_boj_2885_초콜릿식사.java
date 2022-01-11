@@ -2,7 +2,7 @@ package mockTest_5;
 
 import java.util.Scanner;
 
-public class Main_boj_2885_ÃÊÄİ¸´½Ä»ç {
+public class Main_boj_2885_ì´ˆì½œë¦¿ì‹ì‚¬ {
 	
 	static int originSize = 2;
 	static int cut = 0;

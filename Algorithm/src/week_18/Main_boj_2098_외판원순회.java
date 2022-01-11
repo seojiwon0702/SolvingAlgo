@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_boj_2098_¿ÜÆÇ¿ø¼øÈ¸ {
+public class Main_boj_2098_ì™¸íŒì›ìˆœíšŒ {
 	
 	static int[][] costs = null;
 

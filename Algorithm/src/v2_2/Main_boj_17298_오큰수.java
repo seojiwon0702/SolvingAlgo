@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Main_boj_17298_¿ÀÅ«¼ö {
+public class Main_boj_17298_ì˜¤í°ìˆ˜{
 	
 	static Num[] nums = null;
 	static int[] answer = null;

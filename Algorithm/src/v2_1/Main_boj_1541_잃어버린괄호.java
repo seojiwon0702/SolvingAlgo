@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_boj_1541_ÀÒ¾î¹ö¸°°ýÈ£ {
+public class Main_boj_1541_ìžƒì–´ë²„ë¦°ê´„í˜¸ {
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

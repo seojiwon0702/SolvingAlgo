@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_boj_1238_ÆÄÆ¼ {
+public class Main_boj_1238_íŒŒí‹°{
 	
 	static final int INF = Integer.MAX_VALUE;
 	static long[][] map = null;

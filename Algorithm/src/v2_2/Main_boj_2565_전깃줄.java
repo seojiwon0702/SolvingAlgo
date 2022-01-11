@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_boj_2565_Àü±êÁÙ {
+public class Main_boj_2565_ì „ê¹ƒì¤„ {
 	
 	static Wire[] wires = null;
 	

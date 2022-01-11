@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_boj_1504_Æ¯Á¤ÇÑÃÖ´Ü°æ·Î {
+public class Main_boj_1504_íŠ¹ì •í•œìµœë‹¨ê²½ë¡œ {
 	
 	static final int INF = Integer.MAX_VALUE;
 	static int N, M;

@@ -6,16 +6,16 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_boj_1389_ÄÉºóº£ÀÌÄÁÀÇ6´Ü°è¹ıÄ¢ {
+public class Main_boj_1389_ì¼€ë¹ˆë² ì´ì»¨ì˜6ë‹¨ê³„ë²•ì¹™ {
 	
 	static int[][] friends = null;
 	static int N;
 	
 	private static void fw() {
-		for(int i=0; i<N; i++) { // °æÀ¯
-			for(int j=0; j<N; j++) { // Ãâ¹ß
+		for(int i=0; i<N; i++) { // ï¿½ï¿½ï¿½ï¿½
+			for(int j=0; j<N; j++) { // ï¿½ï¿½ï¿½
 				if(j==i) continue;
-				for(int k=0; k<N; k++) { // µµÂø
+				for(int k=0; k<N; k++) { // ï¿½ï¿½ï¿½ï¿½
 					if(k==i || k==j) continue;
 					friends[j][k] = Math.min(friends[j][k], friends[j][i]+friends[i][k]);
 				}

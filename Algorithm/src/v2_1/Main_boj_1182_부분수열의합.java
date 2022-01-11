@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_boj_1182_ºÎºĞ¼ö¿­ÀÇÇÕ {
+public class Main_boj_1182_ë¶€ë¶„ìˆ˜ì—´ì˜í•©{
 	
 	static int[] numbers = null;
 	static int N, S, answer = 0;
@@ -22,8 +22,8 @@ public class Main_boj_1182_ºÎºĞ¼ö¿­ÀÇÇÕ {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		
-		N = Integer.parseInt(st.nextToken()); // Á¤¼öÀÇ °³¼ö
-		S = Integer.parseInt(st.nextToken()); // ¸ñÇ¥ Á¤¼ö
+		N = Integer.parseInt(st.nextToken()); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+		S = Integer.parseInt(st.nextToken()); // ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½
 		
 		numbers = new int[N];
 		

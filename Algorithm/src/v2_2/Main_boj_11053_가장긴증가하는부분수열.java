@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_boj_11053_°¡Àå±äÁõ°¡ÇÏ´ÂºÎºĞ¼ö¿­ {
+public class Main_boj_11053_ê°€ì¥ê¸´ì¦ê°€í•˜ëŠ”ë¶€ë¶„ìˆ˜ì—´ {
 	
 	static int[] nums = null;
 	static int[] lis = null;

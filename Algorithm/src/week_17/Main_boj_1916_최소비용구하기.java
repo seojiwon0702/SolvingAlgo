@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_boj_1916_�ּҺ�뱸�ϱ� {
+public class Main_boj_1916_최소비용구하기 {
 	
 	static final int INF = Integer.MAX_VALUE;
 	static long[][] map = null;

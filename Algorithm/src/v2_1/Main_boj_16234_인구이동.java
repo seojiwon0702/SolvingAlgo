@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_boj_16234_ÀÎ±¸ÀÌµ¿ {
+public class Main_boj_16234_ì¸êµ¬ì´ë™ {
 	
 	static int N,L,R;
 	static int[][] map = null;

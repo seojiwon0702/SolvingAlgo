@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_boj_2170_¼±±ß±â {
+public class Main_boj_2170_ì„ ê¸‹ê¸° {
 	
 	static Queue<Line> queue = new PriorityQueue<Line>();
 	
