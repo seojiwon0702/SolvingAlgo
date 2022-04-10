@@ -1,78 +1,56 @@
 package programmers;
 
-import java.util.PriorityQueue;
+import java.util.Arrays;
+import java.util.Locale;
 
 public class Main_programmers_파일명정렬 {
     public static String[] solution(String[] files) {
-        PriorityQueue<FileName> pq = new PriorityQueue<>();
-        System.out.println("in");
-        for (String file : files) {
-            FileName fn = new FileName(file);
-            pq.add(fn);
-            System.out.println(fn.head+" / "+fn.num+" / "+fn.fileName);
-        }
+        String[] answer = new String[files.length];
+        FileName[] fileNames = new FileName[files.length];
 
-        int idx = 0;
-        System.out.println("out");
-        while (!pq.isEmpty()) {
-            System.out.println(pq.peek().head+" / "+pq.peek().num+" / "+pq.peek().fileName);
-            files[idx] = pq.poll().fileName;
-            idx++;
-        }
+        for(int i=0; i<fileNames.length; i++)
+            fileNames[i] = new FileName(files[i]);
 
-        return files;
+        Arrays.sort(fileNames);
+
+        for(int i=0; i<files.length; i++)
+            answer[i] = fileNames[i].fileName;
+        return answer;
     }
 
     public static void main(String[] args) {
-        //"ABC12","AbC12","aBc12"
-        //"img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"
-        String[] files = {"ABC12","AbC12","aBc12"};
+        String[] files = {"img12.png", "img10.png", "img02.png", "img1.png", "IMG01.GIF", "img2.JPG"};
         String[] answer = solution(files);
         for (String s : answer)
-            System.out.print(s + " ");
+            System.out.print(s + " / ");
     }
 
-    static class FileName implements Comparable<FileName> {
-        String fileName = "";
-        String head = "";
-        int num = 0;
-        String tail = "";
+    static class FileName implements Comparable<FileName>{
+        String head;
+        int num;
+        String fileName;
 
-        FileName(String filename) {
-            fileName += filename;
-            boolean headFlag = true;
-            boolean numFlag = false;
-            boolean tailFlag = true;
-            int idx = 0;
-            while (idx < filename.length()) {
-                if (!numFlag && (int) filename.charAt(idx) >= 48 && (int) filename.charAt(idx) <= 57) {
-                    headFlag = false;
-                    numFlag = true;
-                } else if (numFlag && ((int) filename.charAt(idx) < 48 || (int) filename.charAt(idx) > 57)) {
-                    numFlag = false;
-                    tailFlag = true;
-                }
-
-                if (headFlag) {
-                    if ((int) filename.charAt(idx) >= 97 && (int) filename.charAt(idx) <= 122)
-                        head += (char) ((int) filename.charAt(idx) - 32);
-                    else head += filename.charAt(idx);
-                } else if (numFlag)
-                    num = (num * 10) + Integer.parseInt(String.valueOf(filename.charAt(idx)));
-                else
-                    tail += filename.charAt(idx);
-                idx++;
+        FileName(String fileName){
+            this.fileName = fileName;
+            this.num = 0;
+            this.head = fileName.split("[0-9]")[0];
+            for(int i=head.length(); i<fileName.length(); i++){
+                if(fileName.charAt(i)>='0' && fileName.charAt(i)<='9'){
+                    num*=10;
+                    num+=Integer.parseInt(String.valueOf(fileName.charAt(i)));
+                } else break;
             }
+            System.out.println(this.fileName+" : "+this.head+" / "+this.num);
         }
 
         @Override
         public int compareTo(FileName o) {
-            if (this.head.compareTo(o.head) == 0) {
-//                if(this.num-o.num==0){
-//                    return 1;
-//                }
-                return this.num-o.num;
-            } else return this.head.compareTo(o.head);
+            String thisHead = this.head.toLowerCase();
+            String oHead = o.head.toLowerCase();
+            int result = thisHead.compareTo(oHead);
+            if(result == 0){
+                return this.num - o.num;
+            } else return result;
         }
     }
 }
