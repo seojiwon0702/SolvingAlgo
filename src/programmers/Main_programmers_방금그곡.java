@@ -3,37 +3,28 @@ package programmers;
 import java.util.StringTokenizer;
 
 public class Main_programmers_방금그곡 {
-    public static boolean isContain(String a, String b){
-        boolean result = false;
-        boolean flag = false;
-        for(int i=0; i<b.length(); i++){
-            for(int j=0; j<a.length(); j++){
-                if(a.charAt(i) == b.charAt(j)){
-                    i++;
-
-                } else {
-                    i=0;
-                    flag = false;
-                }
-            }
-            if(flag && i==b.length())
-                result = true;
-            break;
-        }
-        return result;
-    }
 
     public static String solution(String m, String[] musicinfos) {
         Music[] musics = new Music[musicinfos.length];
         for(int i=0; i< musics.length; i++){
+            musicinfos[i] = musicinfos[i].replace("C#", "c");
+            musicinfos[i] = musicinfos[i].replace("D#", "d");
+            musicinfos[i] = musicinfos[i].replace("F#", "f");
+            musicinfos[i] = musicinfos[i].replace("G#", "g");
+            musicinfos[i] = musicinfos[i].replace("A#", "a");
             musics[i] = new Music(musicinfos[i]);
         }
+
+        m = m.replace("C#","c");
+        m = m.replace("D#","d");
+        m = m.replace("F#","f");
+        m = m.replace("G#","g");
+        m = m.replace("A#","a");
 
         Music answer = null;
 
         for(Music music : musics){
-//            if(music.playCode.contains(m)){
-            if(isContain(music.playCode, m)){
+            if(music.playCode.contains(m)){
                 if (answer == null)
                     answer = music;
                 else
