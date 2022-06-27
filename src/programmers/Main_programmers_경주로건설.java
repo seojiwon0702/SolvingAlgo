@@ -4,39 +4,42 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+// 0 : 상하, 1 : 좌우
 public class Main_programmers_경주로건설 {
-
     public static int solution(int[][] board) {
         int answer = Integer.MAX_VALUE;
-        int[][] deltas = {{-1,0}, {0,1}, {1,0},{0,-1}};
-        int[][] cost = new int[board.length][board[0].length];
-        for(int i=0; i<cost.length; i++){
-            Arrays.fill(cost[i],Integer.MAX_VALUE);
-        }
-        cost[0][0] = 0;
+        int N = board.length;
+        int[][] deltas = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
-        Queue<Block> queue = new LinkedList<>();
-        queue.offer(new Block(0,0,-1));
-        queue.offer(new Block(0,0,1));
+        int[][][] costs = new int[N][N][2];
 
-        while(!queue.isEmpty()){
-            Block block = queue.poll();
-            if(block.r == board.length-1 && block.c == board[0].length-1 && answer>=cost[block.r][block.c])
-                answer = cost[block.r][block.c];
-            for(int d=0; d<4; d++){
-                int nr = block.r + deltas[d][0];
-                int nc = block.c + deltas[d][1];
-                int price = cost[block.r][block.c];
-                int direction = block.direction;
-                if((direction==-1 && (d==0 || d==2)) || (direction==1 && (d==1 || d==3)))
-                    price += 100;
-                else{
-                    price += 600;
-                    direction *= -1;
+        Queue<int[]> queue = new LinkedList<>();
+        queue.offer(new int[]{0, 0, 0});
+        queue.offer(new int[]{0, 0, 1});
+
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            if (current[0] == N - 1 && current[1] == N - 1) {
+                if (costs[N - 1][N - 1][current[2]] < answer)
+                    answer = costs[N - 1][N - 1][current[2]];
+                continue;
+            }
+            for (int d = 0; d < 4; d++) {
+                int nr = current[0] + deltas[d][0];
+                int nc = current[1] + deltas[d][1];
+                int direction = current[2];
+                int cost = costs[current[0]][current[1]][direction];
+
+                if ((direction == 0 && (d == 0 || d == 2)) || (direction == 1 && (d == 1 || d == 3))) {
+                    cost += 100;
+                } else {
+                    direction = (direction + 1) % 2;
+                    cost += 600;
                 }
-                if(nr>=0 && nc>=0 && nr< board.length && nc<board[0].length && board[nr][nc] == 0 && cost[nr][nc]>=price){
-                    cost[nr][nc] = price;
-                    queue.offer(new Block(nr, nc, direction));
+
+                if (nr >= 0 && nc >= 0 && nr < N && nc < N && board[nr][nc] == 0 && (costs[nr][nc][direction] == 0 || costs[nr][nc][direction] >= cost)) {
+                    costs[nr][nc][direction] = cost;
+                    queue.offer(new int[]{nr, nc, direction});
                 }
             }
         }
@@ -45,19 +48,10 @@ public class Main_programmers_경주로건설 {
     }
 
     public static void main(String[] args) {
-        int[][] board = {{0, 0, 0, 0, 0, 0, 0, 1}, {0, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 0, 1, 0, 0},
-                {0, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 1}, {0, 0, 1, 0, 0, 0, 1, 0}, {0, 1, 0, 0, 0, 1, 0, 0}, {1, 0, 0, 0, 0, 0, 0, 0}};
+        int[][] board = {{0, 0, 0, 0, 0, 0, 0, 0}, {1, 0, 1, 1, 1, 1, 1, 0}, {1, 0, 0, 1, 0, 0, 0, 0},
+                {1, 1, 0, 0, 0, 1, 1, 1}, {1, 1, 1, 1, 0, 0, 0, 0}, {1, 1, 1, 1, 1, 1, 1, 0}, {1, 1, 1, 1, 1, 1, 1, 0},
+                {1, 1, 1, 1, 1, 1, 1, 0}};
 
         System.out.println(solution(board));
-    }
-
-    static class Block{
-        int r,c,direction;
-
-        Block(int r, int c, int direction){
-            this.r = r;
-            this.c = c;
-            this.direction = direction;
-        }
     }
 }
