@@ -11,8 +11,9 @@ public class Main_boj_6550_부분문자열 {
         StringTokenizer st = null;
         StringBuilder sb = new StringBuilder();
 
-        while(true){
-            st = new StringTokenizer(br.readLine());
+        String str = null;
+        while((str= br.readLine()) != null){
+            st = new StringTokenizer(str);
             if(!st.hasMoreTokens()) break;
 
             String s = st.nextToken();
@@ -21,13 +22,13 @@ public class Main_boj_6550_부분문자열 {
             boolean flag = true;
             for(int i=0; i<s.length(); i++){
                 int idx = t.indexOf(s.charAt(i));
-                if(idx==-1 || idx==t.length()-1) {
+                if(idx==-1) {
                     flag = false;
                     break;
                 }
                 t = t.substring(idx+1);
             }
-            sb.append(flag? "YES" : "NO").append("\n");
+            sb.append(flag? "Yes" : "No").append("\n");
         }
 
         System.out.println(sb.toString());
