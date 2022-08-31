@@ -19,8 +19,11 @@ public class Main_boj_1914_하노이탑 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+
         BigInteger result = new BigInteger("1");
-        if (n == 1) System.out.println(1);
+
+        if (n == 1)
+            System.out.println(1);
         else {
             for (int i = 0; i < n; i++) {
                 result = result.multiply(new BigInteger("2"));
